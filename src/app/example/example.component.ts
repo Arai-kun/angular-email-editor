@@ -6,36 +6,35 @@ import sample from './sample.json';
 @Component({
   selector: 'app-example',
   templateUrl: './example.component.html',
-  styleUrls: ['./example.component.css'],
+  styleUrls: ['./example.component.css']
 })
 export class ExampleComponent implements OnInit {
-  options = {};
 
-  constructor() {}
-
-  ngOnInit() {}
+  options = {
+  };
 
   @ViewChild('editor')
   private emailEditor: EmailEditorComponent;
 
+  constructor() { }
+
+  ngOnInit() {
+  }
+
   editorLoaded(event) {
-    console.log('editorLoaded');
     this.emailEditor.editor.loadDesign(sample);
   }
 
-  editorReady() {
-    console.log('editorReady');
-  }
-
   saveDesign() {
-    this.emailEditor.editor.saveDesign((data) =>
-      console.log('saveDesign', data)
+    this.emailEditor.editor.saveDesign(
+      (data) => console.log('saveDesign', data)
     );
   }
 
   exportHtml() {
-    this.emailEditor.editor.exportHtml((data) =>
-      console.log('exportHtml', data)
+    this.emailEditor.editor.exportHtml(
+      (data) => console.log('exportHtml', data)
     );
   }
+
 }
